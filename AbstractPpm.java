@@ -17,7 +17,7 @@ abstract class AbstractPpm {
         return this.maximumOpacity;
     }
     private void setMaximumOpacity(int newMaximumOpacity) {
-        if (newMaximumOpacity < 10) {
+        if ((newMaximumOpacity > 0) && (newMaximumOpacity < 10)) {
             this.maximumOpacity = newMaximumOpacity;
         }
     }
