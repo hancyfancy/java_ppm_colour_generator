@@ -11,11 +11,11 @@ import java.util.regex.Pattern;
 public class ColourGenerator extends AbstractPpm {
     private String storageLocation;
     private PpmSchema template;
-    public ColourGenerator(int newOpacity, String newStorageLocation) {
+    public ColourGenerator(String newStorageLocation) {
         super();
         this.setStorageLocation(newStorageLocation);
-        this.setTemplate(new PpmSchema(newOpacity));
-        this.generateColours(newOpacity, newStorageLocation);
+        this.setTemplate(new PpmSchema());
+        this.generateColours(getMaximumOpacity(), newStorageLocation);
     }
     public String getStorageLocation() {
         return this.storageLocation;
@@ -38,7 +38,7 @@ public class ColourGenerator extends AbstractPpm {
     }
     private void generateColours(int opacity, String storageLocation) {
         PpmSchema templateI = getTemplate();
-        for (int i = 0; i < 1000; i++) {
+        for (int i = 0; i < ((opacity*111)+1); i++) {
             String wordI = String.valueOf(i);
             String paddedWordI = ("000" + wordI).substring(wordI.length());
             templateI.setPermutation(paddedWordI);
